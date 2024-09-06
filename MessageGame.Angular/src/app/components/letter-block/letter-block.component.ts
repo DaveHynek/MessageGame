@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { LetterPropertiesService } from '../../services/letter-properties.service';
+import { LetterType } from '../../classes/letter-type';
 
 @Component({
   selector: 'app-letter-block',
@@ -7,7 +9,29 @@ import { Component, Input } from '@angular/core';
   templateUrl: './letter-block.component.html',
   styleUrl: './letter-block.component.css'
 })
-export class LetterBlockComponent {
+export class LetterBlockComponent implements OnInit {
   @Input() letter = '';
-  @Input() color = '';
+
+  protected color = 'red';
+
+  private letterPropService: LetterPropertiesService;
+  constructor(letterPropSvc: LetterPropertiesService) {
+    this.letterPropService = letterPropSvc;
+  }
+
+  ngOnInit() {
+    var letterType = this.letterPropService.getLetterColor(this.letter);
+
+    switch (letterType) {
+      case LetterType.Green:
+        this.color = 'Green';
+        break;
+      case LetterType.Red:
+        this.color = 'Red';
+        break;
+      case LetterType.Black:
+        this.color = 'Gray';
+        break;
+    }
+  }
 }

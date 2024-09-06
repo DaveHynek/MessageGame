@@ -10,9 +10,6 @@ import { LetterBlockComponent } from '../letter-block/letter-block.component';
   styleUrl: './letter-grid.component.css'
 })
 export class LetterGridComponent {
-  private greenLetters = ['A', 'E', 'I', 'L', 'N', 'O', 'R', 'S', 'T'];
-  private redLetters = ['J', 'K', 'Q', 'V', 'X', 'Z'];
-  private blackLetters = ['B', 'C', 'D', 'F', 'G', 'H', 'M', 'P', 'U', 'W', 'Y'];
   protected alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   constructor() {
